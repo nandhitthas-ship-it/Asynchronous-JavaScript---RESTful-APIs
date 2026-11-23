@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Search for a city and see its current weather conditions."
+    />
+    <title>Weather Now | Live Weather Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="dashboard">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Weather Now home">
+          <span class="brand-mark" aria-hidden="true">✳</span>
+          <span>weather<span class="brand-light">now</span></span>
+        </a>
+        <p class="topbar-note"><span class="live-dot"></span> Live conditions</p>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">YOUR LOCAL FORECAST</p>
+        <h1 id="page-title">A little more <span>sunshine.</span></h1>
+        <p class="intro-copy">The weather, wherever you are.</p>
+
+        <form class="search-form" id="search-form" role="search">
+          <label class="sr-only" for="city-input">Search for a city</label>
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input
+            id="city-input"
+            name="city"
+            type="search"
+            placeholder="Search a city..."
+            autocomplete="off"
+            required
+          />
+          <button type="submit" id="search-button">
+            <span class="button-label">Search</span>
+            <span class="button-spinner" aria-hidden="true"></span>
+          </button>
+        </form>
+        <p class="search-hint">Try a city name, like Tokyo or New York</p>
+        <p class="status-message" id="status-message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="weather-section" aria-label="Current weather">
+        <div class="weather-heading">
+          <div>
+            <p class="eyebrow">RIGHT NOW</p>
+            <h2 id="location-name">Loading weather...</h2>
+            <p class="location-meta" id="location-meta"></p>
+          </div>
+          <div class="local-time" id="local-time"></div>
+        </div>
+
+        <article class="weather-card" aria-live="polite">
+          <div class="current-weather">
+            <div class="weather-symbol" id="weather-symbol" aria-hidden="true">☀️</div>
+            <div>
+              <p class="weather-description" id="weather-description">Getting conditions</p>
+              <p class="temperature"><span id="temperature">--</span><sup>°</sup></p>
+              <p class="feels-like" id="feels-like">Feels like --°</p>
+            </div>
+          </div>
+          <div class="metrics" aria-label="Weather metrics">
+            <div class="metric">
+              <span class="metric-icon humidity-icon" aria-hidden="true">◌</span>
+              <div>
+                <p class="metric-label">Humidity</p>
+                <p class="metric-value"><span id="humidity">--</span><span class="unit">%</span></p>
+              </div>
+            </div>
+            <div class="metric">
+              <span class="metric-icon wind-icon" aria-hidden="true">↗</span>
+              <div>
+                <p class="metric-label">Wind speed</p>
+                <p class="metric-value"><span id="wind-speed">--</span><span class="unit"> km/h</span></p>
+              </div>
+            </div>
+            <div class="metric">
+              <span class="metric-icon rain-icon" aria-hidden="true">⌁</span>
+              <div>
+                <p class="metric-label">Precipitation</p>
+                <p class="metric-value"><span id="precipitation">--</span><span class="unit"> mm</span></p>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <span><span class="live-dot"></span> Current conditions</span>
+            <span id="updated-time">Updating...</span>
+          </footer>
+        </article>
+        <p class="attribution">
+          Weather data by
+          <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a>
+        </p>
+      </section>
+
+      <footer class="page-footer">Made for brighter days <span aria-hidden="true">☀</span></footer>
+    </main>
+  </body>
+</html>

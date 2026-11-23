@@ -1,0 +1,513 @@
+:root {
+  color-scheme: light;
+  font-family: "DM Sans", sans-serif;
+  color: #172d35;
+  background: #f5f8f6;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  --ink: #172d35;
+  --muted: #829196;
+  --teal: #167c73;
+  --mint: #e4f2e9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 9% 9%, rgba(218, 241, 226, 0.62), transparent 34rem),
+    radial-gradient(ellipse at 92% 38%, rgba(232, 241, 230, 0.65), transparent 27rem),
+    #f7f9f7;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.dashboard {
+  width: min(100% - 48px, 1060px);
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(30, 66, 66, 0.08);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  font-family: "Manrope", sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.9px;
+  text-decoration: none;
+}
+
+.brand-mark {
+  color: #57a588;
+  font-size: 27px;
+  line-height: 1;
+}
+
+.brand-light {
+  color: #6a8987;
+  font-weight: 500;
+}
+
+.topbar-note,
+.card-footer {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #738589;
+  font-size: 12px;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+  border-radius: 50%;
+  background: #52a887;
+  box-shadow: 0 0 0 3px rgba(82, 168, 135, 0.13);
+}
+
+.intro {
+  padding: 66px 0 57px;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: #639184;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 9px;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(35px, 5vw, 52px);
+  font-weight: 700;
+  letter-spacing: -2.6px;
+  line-height: 1.15;
+}
+
+h1 span {
+  color: #4a9b79;
+}
+
+.intro-copy {
+  margin-bottom: 28px;
+  color: #819094;
+  font-size: 15px;
+}
+
+.search-form {
+  width: min(100%, 470px);
+  height: 56px;
+  margin: 0 auto;
+  padding: 5px 5px 5px 19px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #e8eeea;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 28px rgba(47, 86, 73, 0.08);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.search-form:focus-within {
+  border-color: #9dcbb5;
+  box-shadow: 0 0 0 4px rgba(83, 159, 123, 0.11), 0 10px 28px rgba(47, 86, 73, 0.08);
+}
+
+.search-icon {
+  color: #8ba09c;
+  font-size: 28px;
+  line-height: 1;
+  transform: rotate(-20deg);
+}
+
+.search-form input {
+  min-width: 0;
+  flex: 1;
+  border: 0;
+  outline: 0;
+  color: var(--ink);
+  background: transparent;
+  font-size: 14px;
+}
+
+.search-form input::placeholder {
+  color: #a0abad;
+}
+
+.search-form button {
+  height: 44px;
+  min-width: 92px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  background: #277f6e;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.search-form button:hover {
+  background: #206f61;
+}
+
+.search-form button:active {
+  transform: scale(0.98);
+}
+
+.search-form button:disabled {
+  cursor: wait;
+  opacity: 0.78;
+}
+
+.button-spinner {
+  width: 15px;
+  height: 15px;
+  display: none;
+  margin: 0 auto;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 700ms linear infinite;
+}
+
+.search-form.is-loading .button-label {
+  display: none;
+}
+
+.search-form.is-loading .button-spinner {
+  display: block;
+}
+
+.search-hint {
+  margin: 12px 0 0;
+  color: #9aa6a6;
+  font-size: 11px;
+}
+
+.status-message {
+  min-height: 18px;
+  margin: 10px 0 0;
+  color: #a0443c;
+  font-size: 12px;
+}
+
+.weather-section {
+  width: min(100%, 780px);
+  margin: 0 auto;
+}
+
+.weather-heading {
+  min-height: 68px;
+  margin-bottom: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.weather-heading .eyebrow {
+  margin-bottom: 6px;
+  font-size: 9px;
+}
+
+.weather-heading h2 {
+  margin-bottom: 3px;
+  font-family: "Manrope", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.6px;
+}
+
+.location-meta,
+.local-time {
+  margin-bottom: 0;
+  color: #879699;
+  font-size: 12px;
+}
+
+.local-time {
+  align-self: flex-end;
+  padding-bottom: 3px;
+}
+
+.weather-card {
+  overflow: hidden;
+  border: 1px solid rgba(223, 234, 227, 0.92);
+  border-radius: 19px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 18px 50px rgba(38, 74, 61, 0.08);
+}
+
+.current-weather {
+  min-height: 216px;
+  padding: 34px 46px;
+  display: flex;
+  align-items: center;
+  gap: 27px;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(235, 248, 229, 0.8), transparent 13rem),
+    linear-gradient(110deg, #f1f8f1 0%, #fbfcf8 65%, #f8fbf2 100%);
+}
+
+.weather-symbol {
+  width: 112px;
+  flex: 0 0 112px;
+  text-align: center;
+  font-size: 75px;
+  filter: drop-shadow(0 10px 12px rgba(169, 161, 98, 0.16));
+}
+
+.weather-description {
+  margin-bottom: 2px;
+  color: #617875;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.temperature {
+  margin: -4px 0 -2px;
+  font-family: "Manrope", sans-serif;
+  font-size: 76px;
+  font-weight: 600;
+  letter-spacing: -6px;
+  line-height: 1.12;
+}
+
+.temperature sup {
+  position: relative;
+  top: -1.1em;
+  margin-left: 4px;
+  font-size: 23px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.feels-like {
+  margin: 0;
+  color: #81908e;
+  font-size: 12px;
+}
+
+.metrics {
+  min-height: 111px;
+  padding: 23px 34px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+}
+
+.metric {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+}
+
+.metric + .metric {
+  border-left: 1px solid #edf1ee;
+}
+
+.metric-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  flex: 0 0 36px;
+  place-items: center;
+  border-radius: 11px;
+  color: #438d78;
+  background: #eef7ef;
+  font-size: 22px;
+}
+
+.wind-icon {
+  color: #5886a0;
+  background: #eef5f7;
+}
+
+.rain-icon {
+  color: #8194c1;
+  background: #f0f2fa;
+}
+
+.metric-label {
+  margin-bottom: 3px;
+  color: #889797;
+  font-size: 11px;
+}
+
+.metric-value {
+  margin: 0;
+  color: #23383c;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.metric-value .unit {
+  color: #879497;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.card-footer {
+  min-height: 43px;
+  padding: 0 23px;
+  justify-content: space-between;
+  border-top: 1px solid #f0f3f0;
+  font-size: 10px;
+}
+
+.card-footer .live-dot {
+  width: 6px;
+  height: 6px;
+  margin-right: 4px;
+}
+
+.attribution {
+  margin: 14px 0 0;
+  color: #a0aaaa;
+  text-align: right;
+  font-size: 10px;
+}
+
+.attribution a {
+  color: #748e85;
+  text-decoration-color: #b7c9bf;
+  text-underline-offset: 2px;
+}
+
+.page-footer {
+  margin-top: auto;
+  padding: 46px 0 22px;
+  color: #a0aaa8;
+  text-align: center;
+  font-size: 11px;
+}
+
+.page-footer span {
+  color: #d3a846;
+}
+
+.sr-only {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard {
+    width: min(100% - 32px, 480px);
+  }
+
+  .topbar {
+    height: 72px;
+  }
+
+  .intro {
+    padding: 52px 0 39px;
+  }
+
+  h1 {
+    letter-spacing: -1.8px;
+  }
+
+  .weather-heading h2 {
+    font-size: 20px;
+  }
+
+  .current-weather {
+    min-height: 184px;
+    padding: 27px 19px;
+    gap: 10px;
+  }
+
+  .weather-symbol {
+    width: 82px;
+    flex-basis: 82px;
+    font-size: 59px;
+  }
+
+  .temperature {
+    font-size: 66px;
+  }
+
+  .metrics {
+    padding: 20px 10px;
+  }
+
+  .metric {
+    flex-direction: column;
+    gap: 7px;
+    text-align: center;
+  }
+
+  .metric-label {
+    font-size: 10px;
+  }
+
+  .metric-value {
+    font-size: 15px;
+  }
+
+  .card-footer {
+    padding: 0 14px;
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
